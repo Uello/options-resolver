@@ -145,7 +145,7 @@ class OptionsResolver implements Options
      * @param string $option The name of the option
      * @param mixed  $value  The default value of the option
      *
-     * @return $this
+     * @return OptionsResolver This instance
      *
      * @throws AccessException If called from a lazy option or normalizer
      */
@@ -208,7 +208,7 @@ class OptionsResolver implements Options
      *
      * @param array $defaults The default values to set
      *
-     * @return $this
+     * @return OptionsResolver This instance
      *
      * @throws AccessException If called from a lazy option or normalizer
      */
@@ -237,11 +237,19 @@ class OptionsResolver implements Options
     }
 
     /**
+     * @return array
+     */
+    public function getDefaultOptions()
+    {
+        return $this->defaults;
+    }
+
+    /**
      * Marks one or more options as required.
      *
      * @param string|string[] $optionNames One or more option names
      *
-     * @return $this
+     * @return OptionsResolver This instance
      *
      * @throws AccessException If called from a lazy option or normalizer
      */
@@ -322,7 +330,7 @@ class OptionsResolver implements Options
      *
      * @param string|string[] $optionNames One or more option names
      *
-     * @return $this
+     * @return OptionsResolver This instance
      *
      * @throws AccessException If called from a lazy option or normalizer
      */
@@ -389,7 +397,7 @@ class OptionsResolver implements Options
      * @param string   $option     The option name
      * @param \Closure $normalizer The normalizer
      *
-     * @return $this
+     * @return OptionsResolver This instance
      *
      * @throws UndefinedOptionsException If the option is undefined
      * @throws AccessException           If called from a lazy option or normalizer
@@ -432,7 +440,7 @@ class OptionsResolver implements Options
      * @param string $option        The option name
      * @param mixed  $allowedValues One or more acceptable values/closures
      *
-     * @return $this
+     * @return OptionsResolver This instance
      *
      * @throws UndefinedOptionsException If the option is undefined
      * @throws AccessException           If called from a lazy option or normalizer
@@ -477,7 +485,7 @@ class OptionsResolver implements Options
      * @param string $option        The option name
      * @param mixed  $allowedValues One or more acceptable values/closures
      *
-     * @return $this
+     * @return OptionsResolver This instance
      *
      * @throws UndefinedOptionsException If the option is undefined
      * @throws AccessException           If called from a lazy option or normalizer
@@ -513,6 +521,14 @@ class OptionsResolver implements Options
     }
 
     /**
+     * @return array
+     */
+    public function getAllowedValues()
+    {
+        return $this->allowedValues;
+    }
+
+    /**
      * Sets allowed types for an option.
      *
      * Any type for which a corresponding is_<type>() function exists is
@@ -522,7 +538,7 @@ class OptionsResolver implements Options
      * @param string          $option       The option name
      * @param string|string[] $allowedTypes One or more accepted types
      *
-     * @return $this
+     * @return OptionsResolver This instance
      *
      * @throws UndefinedOptionsException If the option is undefined
      * @throws AccessException           If called from a lazy option or normalizer
@@ -550,6 +566,14 @@ class OptionsResolver implements Options
     }
 
     /**
+     * @return array
+     */
+    public function getAllowedTypes()
+    {
+        return $this->allowedTypes;
+    }
+
+    /**
      * Adds allowed types for an option.
      *
      * The types are merged with the allowed types defined previously.
@@ -561,7 +585,7 @@ class OptionsResolver implements Options
      * @param string          $option       The option name
      * @param string|string[] $allowedTypes One or more accepted types
      *
-     * @return $this
+     * @return OptionsResolver This instance
      *
      * @throws UndefinedOptionsException If the option is undefined
      * @throws AccessException           If called from a lazy option or normalizer
@@ -599,7 +623,7 @@ class OptionsResolver implements Options
      *
      * @param string|string[] $optionNames One or more option names
      *
-     * @return $this
+     * @return OptionsResolver This instance
      *
      * @throws AccessException If called from a lazy option or normalizer
      */
@@ -620,7 +644,7 @@ class OptionsResolver implements Options
     /**
      * Removes all options.
      *
-     * @return $this
+     * @return OptionsResolver This instance
      *
      * @throws AccessException If called from a lazy option or normalizer
      */
